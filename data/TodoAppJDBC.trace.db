@@ -1,0 +1,21 @@
+2024-12-30 18:59:56.980324+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODO_ITEMS" not found (this database is empty); SQL statement:
+SELECT * FROM todo_items [42104-232]
+2024-12-30 18:59:57.110305+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODO_ITEMS" not found (this database is empty); SQL statement:
+SELECT * FROM todo_items [42104-232]
+2024-12-30 19:02:13.078438+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODO_ITEMS" not found (this database is empty); SQL statement:
+SELECT * FROM todo_items [42104-232]
+2024-12-30 19:02:13.223271+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODO_ITEMS" not found (this database is empty); SQL statement:
+SELECT * FROM todo_items [42104-232]
+2024-12-30 19:02:14.003338+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODO_ITEMS" not found (this database is empty); SQL statement:
+SELECT * FROM todo_items [42104-232]
+2024-12-30 19:02:14.641591+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODO_ITEMS" not found (this database is empty); SQL statement:
+SELECT * FROM todo_items [42104-232]
+2024-12-30 19:02:25.375156+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODO_ITEMS" not found (this database is empty); SQL statement:
+UPDATE todo_items SET description = ?, is_complete = ?, updated_at = ? WHERE id = ? [42104-232]

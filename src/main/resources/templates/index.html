@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todo List App</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
+</head>
+<body>
+<h1>To-Do List</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Is Completed</th>
+        <th>Updated At</th>
+        <th>Created At</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="item : ${todoItems}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.description}"></td>
+        <td th:text="${item.isComplete}"></td>
+        <td th:text="${#dates.format(item.updatedAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${#dates.format(item.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <div>
+            <td>
+                <a th:href="@{/delete/{id}(id=${item.id})}" class="btn btn-danger">
+                    Delete
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/update/{id}(id=${item.id})}" class="btn btn-success">
+                    <span th:text="${item.isComplete} ? 'Mark as Incomplete' : 'Mark as Complete'"></span>
+                </a>
+            </td>
+        </div>
+
+    </tr>
+</table>
+<a th:href="@{/create}">Create New</a>
+</body>
+</html>
