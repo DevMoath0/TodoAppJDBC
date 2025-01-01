@@ -5,10 +5,9 @@ import java.time.Instant;
 public class TodoItem {
 
     private String description;
-    private Boolean isComplete;
+    private Boolean isComplete = false;
     private Instant createdAt;
     private Instant updatedAt;
-
 
     private Long id;
 
