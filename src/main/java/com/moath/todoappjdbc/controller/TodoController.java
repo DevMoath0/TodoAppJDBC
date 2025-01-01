@@ -1,7 +1,7 @@
-package com.moath.TodoAppJDBC.controller;
+package com.moath.todoappjdbc.controller;
 
-import com.moath.TodoAppJDBC.model.TodoItem;
-import com.moath.TodoAppJDBC.service.TodoItemService;
+import com.moath.todoappjdbc.model.TodoItem;
+import com.moath.todoappjdbc.service.TodoItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,10 +35,14 @@ public class TodoController {
         return "redirect:/";
     }
 
-    @PostMapping("/createpostman")
-    public ResponseEntity<TodoItem> createpostman(@ModelAttribute TodoItem todoItem) {
-        todoItemService.save(todoItem);
-        return ResponseEntity.ok(todoItem); // Return the created item as JSON
+    @GetMapping("/getData/{id}")
+    public ResponseEntity<TodoItem> getDataById(@PathVariable Long id){
+        TodoItem todoItem = todoItemService.getById(id);
+        try{
+            return ResponseEntity.ok(todoItem);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/delete/{id}")

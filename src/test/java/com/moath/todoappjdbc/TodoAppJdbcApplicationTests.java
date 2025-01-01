@@ -1,4 +1,4 @@
-package com.moath.TodoAppJDBC;
+package com.moath.todoappjdbc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
