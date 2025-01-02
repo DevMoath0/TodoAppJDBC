@@ -1,6 +1,6 @@
-package com.moath.todoappjdbc.repository;
+package com.moath.todoappjdbc.todo.repository;
 
-import com.moath.todoappjdbc.model.TodoItem;
+import com.moath.todoappjdbc.todo.model.TodoItem;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

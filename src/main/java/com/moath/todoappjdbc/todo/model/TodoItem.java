@@ -1,4 +1,4 @@
-package com.moath.todoappjdbc.model;
+package com.moath.todoappjdbc.todo.model;
 
 import java.time.Instant;
 
