@@ -16,7 +16,7 @@ public class TodoController {
     @Autowired
     private TodoItemService todoItemService;
 
-    @GetMapping("/")
+    @GetMapping("/fetch")
     public ResponseEntity<List<TodoItem>> getAllTodos() {
         List<TodoItem> todoItems = todoItemService.getAll();
         return ResponseEntity.ok(todoItems);
@@ -28,7 +28,7 @@ public class TodoController {
         return ResponseEntity.ok(todoItem);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/fetch/{id}")
     public ResponseEntity<TodoItem> getTodoById(@PathVariable Long id) {
         try {
             TodoItem todoItem = todoItemService.getById(id);
@@ -38,7 +38,7 @@ public class TodoController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteTodoById(@PathVariable Long id) {
         try {
             todoItemService.delete(id);
@@ -48,7 +48,7 @@ public class TodoController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<TodoItem> updateTodoStatusById(@PathVariable Long id) {
         try {
             TodoItem todoItem = todoItemService.getById(id);

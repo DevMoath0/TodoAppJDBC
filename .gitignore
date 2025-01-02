@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore secret.properties file in resources folder
+secret.properties
