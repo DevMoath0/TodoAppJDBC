@@ -1,7 +1,7 @@
-package com.moath.todoappjdbc.controller;
+package com.moath.todoappjdbc.todo.controller;
 
-import com.moath.todoappjdbc.model.TodoItem;
-import com.moath.todoappjdbc.service.TodoItemService;
+import com.moath.todoappjdbc.todo.model.TodoItem;
+import com.moath.todoappjdbc.todo.service.TodoItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

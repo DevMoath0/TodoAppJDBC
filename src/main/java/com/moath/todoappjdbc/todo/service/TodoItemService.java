@@ -1,7 +1,7 @@
-package com.moath.todoappjdbc.service;
+package com.moath.todoappjdbc.todo.service;
 
-import com.moath.todoappjdbc.model.TodoItem;
-import com.moath.todoappjdbc.repository.TodoItemRepository;
+import com.moath.todoappjdbc.todo.model.TodoItem;
+import com.moath.todoappjdbc.todo.repository.TodoItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
