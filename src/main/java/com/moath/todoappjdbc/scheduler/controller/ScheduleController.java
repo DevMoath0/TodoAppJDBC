@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/scheduler")
-@CrossOrigin(origins = "http://localhost:8081") // Allow frontend origin
+@CrossOrigin(origins = "*") // Allow frontend origin
 @Tag(name = "Scheduler", description = "Endpoints for managing scheduled tasks.")
 public class ScheduleController {
 

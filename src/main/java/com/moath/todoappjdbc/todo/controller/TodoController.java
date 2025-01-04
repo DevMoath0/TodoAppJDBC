@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:8081") // Allow frontend origin
+@CrossOrigin(origins = "*") // Allow frontend origin
 @Tag(name = "Todo", description = "Endpoints for managing todo items.")
 public class TodoController {
 

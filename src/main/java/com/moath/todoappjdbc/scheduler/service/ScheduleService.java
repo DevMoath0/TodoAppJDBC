@@ -45,7 +45,7 @@ public class ScheduleService {
         }
     }
 
-    @Scheduled(cron = "0 0 * * * *")
+    @Scheduled(cron = "0 * * * * *")
     public void createNewItem() {
         if (createItemFlag) {
             logger.info("Creating item");
@@ -61,8 +61,6 @@ public class ScheduleService {
             logger.info("Create Item Flag is disabled.");
         }
     }
-
-
 
     private void deleteItemSafely(TodoItem item) {
         try {
