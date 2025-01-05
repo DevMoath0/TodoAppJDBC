@@ -13,8 +13,12 @@ import java.util.List;
 @Repository
 public class TodoItemRepository {
 
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public TodoItemRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @PostConstruct
     public void initializeDatabase() {
@@ -49,9 +53,9 @@ public class TodoItemRepository {
                 Instant.now(), item.getId());
     }
 
-    public int deleteById(Long id) {
+    public void deleteById(Long id) {
         String sql = "DELETE FROM todo_items WHERE id = ?";
-        return jdbcTemplate.update(sql, id);
+        jdbcTemplate.update(sql, id);
     }
 
     private TodoItem mapRowToDoItem(ResultSet rs) throws java.sql.SQLException{
