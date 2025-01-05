@@ -4,9 +4,14 @@ import com.moath.todoappjdbc.todo.model.TodoItem;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
 
@@ -41,16 +46,34 @@ public class TodoItemRepository {
         return jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> mapRowToDoItem(rs));
     }
 
-    public void save(TodoItem item) {
-        String sql = "INSERT INTO todo_items (description, is_complete, created_at, updated_at) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, item.getDescription(), item.getIsComplete(),
-                Instant.now(), Instant.now());
+    public TodoItem save(TodoItem item) {
+        String sql = "INSERT INTO todo_items (description, is_complete, created_at, updated_at) " +
+                "VALUES (?, ?, ?, ?)";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        Instant now = Instant.now();
+
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, item.getDescription());
+            ps.setBoolean(2, item.getIsComplete());
+            ps.setTimestamp(3, Timestamp.from(now));
+            ps.setTimestamp(4, Timestamp.from(now));
+            return ps;
+        }, keyHolder);
+
+        item.setId(keyHolder.getKey().longValue());
+        item.setCreatedAt(now);
+        item.setUpdatedAt(now);
+
+        return item;
     }
 
     public void update(TodoItem item) {
-        String sql = "UPDATE todo_items SET  is_complete = ?, updated_at = ? WHERE id = ?";
-        jdbcTemplate.update(sql, item.getIsComplete(),
-                Instant.now(), item.getId());
+        String sql = "UPDATE todo_items SET is_complete = ?, updated_at = ? WHERE id = ?";
+        Instant now = Instant.now();
+        jdbcTemplate.update(sql, item.getIsComplete(), now, item.getId());
+        item.setUpdatedAt(now);
     }
 
     public void deleteById(Long id) {
