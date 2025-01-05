@@ -45,7 +45,7 @@ public class ScheduleService {
         }
     }
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 0 * * * *")
     public void createNewItem() {
         if (createItemFlag) {
             logger.info("Creating item");
